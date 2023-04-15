@@ -1,0 +1,25 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+.cabecalho img{
+    width: 30%;
+    max-width: 30%;
+    display: block;
+}
+.cabecalho nav{
+    display: flex;
+    width: 60%;
+    height: 100%;
+    border: solid 5px #ff0;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
