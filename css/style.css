@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+}
+.cabecalho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+.cabecalho img{
+    width: 30%;
+    max-width: 30%;
+    display: block;
+}
+.cabecalho nav{
+    display: flex;
+    width: 60%;
+    height: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.cabecalho a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 4em;
+    font-weight: 700;
+    padding: 20% 0;
+}
+.cabecalho a:hover{
+    color: rgb(17, 16, 16);
+    background-color: #fff;
+    transition: 1s;
+    transform: rotate(360deg);
+}
+.cabecalho a:not(:hover){
+    color: #fff;
+    background-color: rgb(0, 0, 0);
+    transition: 2s;
+}
