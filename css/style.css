@@ -13,3 +13,18 @@
     text-align: center;
     margin: 5% 0;
 }
+
+/*BREAKPOINT*/
+@media (max-width:725px) {
+    .cabecalho{
+        flex-direction: column;
+    }
+    .cabecalho nav{
+        flex-wrap: nowrap;
+    }
+    .cabecalho a{
+        font-size: 1em;
+    }
+
+    
+}
