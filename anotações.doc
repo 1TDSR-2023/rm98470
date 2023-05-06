@@ -9,3 +9,6 @@ DOM = Document Object model
 //querySelectorAll
 //Array
 //Estruturas de repetição
+
+Arrays sao variaveis diferentes0, ou melhor, objetos, pois consegue armazenar mais de uma informação
+Arrays é bom declarar com "let"
