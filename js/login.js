@@ -40,45 +40,54 @@ eyePass.addEventListener("click", ()=>{
 
 //list of users
 
-let listaDeUsuarios = [
-{
-    nomeCompleto : "Lucas das Couves",
-    emailUsuario : "lucas@gmail.com",
-    senhaUsuario : "123456"
-    },
-    {
-    nomeCompleto : "Juan Pelego",
-    emailUsuario : "Juan@gmail.com",
-    senhaUsuario : "123456"
-    },
-    {
-    nomeCompleto : "Matheuzin Delgado",
-    emailUsuario : "Matheuzin@gmail.com",
-    senhaUsuario : "123456"
-    },
-    {
-    nomeCompleto : "Derick Maluco",
-    emailUsuario : "Derick@gmail.com",
-    senhaUsuario : "123456"
+// let listaDeUsuarios = [
+// {
+//     nomeCompleto : "Lucas das Couves",
+//     emailUsuario : "lucas@gmail.com",
+//     senhaUsuario : "123456"
+//     },
+//     {
+//     nomeCompleto : "Juan Pelego",
+//     emailUsuario : "Juan@gmail.com",
+//     senhaUsuario : "123456"
+//     },
+//     {
+//     nomeCompleto : "Matheuzin Delgado",
+//     emailUsuario : "Matheuzin@gmail.com",
+//     senhaUsuario : "123456"
+//     },
+//     {
+//     nomeCompleto : "Derick Maluco",
+//     emailUsuario : "Derick@gmail.com",
+//     senhaUsuario : "123456"
    
-}
-];
+// }
+// ];
+//declarar LocalStorage:
+//localStorage.setItem("key", String);
+//localStorage.setItem("lista-user", JSON.stringify(listaDeUsuarios));
 
 const botaoSubmit = document.querySelector("#btnSubmit");
 
 botaoSubmit.addEventListener("click", ()=>{
-    //creating an validation object
-    let userValidado = {
-        emailUsuarioValidado : inputEmail.value,
-         senhaUsuarioValidado : inputSenha.value
+    //Criando um Objeto USUÁRIO LOGADO
+    let userLogado = {
+        emailUsuarioLogado : inputEmail.value,
+        senhaUsuarioLogado : inputSenha.value
     }
+
+    let userValidado = {};
 //criando uma interação com a lista de objetos para realizar a validação
 //com o usuarioValidado
 try{
+    //Recuperando o LocalStorage
+
+    let listaDeUsuarios = JSON.parse(localStorage.getItem("lista-user")); 
+
     listaDeUsuarios.forEach((usuario)=>{
     //realizando a validação
     //comparando cada objeto da lista com o objeto monstado com os dados que vieram do form
-    if(userValidado.emailUsuarioValidado == usuario.emailUsuario && userValidado.senhaUsuarioValidado == usuario.senhaUsuario){
+    if(userLogado.emailUsuarioLogado == usuario.emailUsuario && userLogado.senhaUsuarioLogado == usuario.senhaUsuario){
         userValidado = usuario;
         throw "VALIDADO";
 }
@@ -91,10 +100,23 @@ throw "senha errada";
 
     if(msg == "VALIDADO"){
         msgStatus.setAttribute("style","color:#00ff00");
-        msgStatus.innerHTML = `<span><strong>Usuário: ${userValidado.nomeCompleto} Login efetuado com Sucesso!</strong></span>`;
+        msgStatus.innerHTML = `<span><strong>Usuário: ${userValidado.nomeCompleto} 
+        Login efetuado com Sucesso!</strong></span>`;
+
+        //ADICIONANDO O USUARIO-VALIDADO NO LOCAL-STORAGE
+        localStorage.setItem("user-validado", JSON.stringify(userValidado));
+
+        //Criando um token com o Math.randon 0.gt4g3f3gf
+        const token = Math.random().toString(16).substring(2)+Math.random().toString(16).substring(2);
+        //alert(token);
+
+        //ADICIONANDO O TOKEN NO LOCAL-STORAGE
+        localStorage.setItem("user-token", token);
 
         //Redirect
-        
+        setTimeout(()=>{
+            window.location.href = "../home.html";
+        }, 300);
 
     }else{
         msgStatus.setAttribute("style","color:#ff0000");
